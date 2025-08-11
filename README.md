@@ -1,5 +1,7 @@
 # OmniPlay - Multimodal AI Gaming Evaluation Platform
 
+📄 **Paper**: [OmniPlay: Benchmarking Omni-Modal Models on Omni-Modal Game Playing](https://arxiv.org/abs/2508.04361)
+
 A comprehensive platform for evaluating large language models' performance in multimodal gaming environments, supporting visual, audio, and text input modalities.
 
 ## 🎮 Supported Games
@@ -20,7 +22,7 @@ A comprehensive platform for evaluating large language models' performance in mu
 - **Modalities**: Video/Image Sequence + Audio + Vector Data
 - **Task**: Command military units to complete objectives
 - **Features**: Hidden target discovery, movement uncertainty
-- **Scripts**: `eval-oepnai-multi-episode.py`, `eval-baichuan-multi-episode.py`
+- **Scripts**: `eval-openai-multi-episode.py`, `eval-baichuan-multi-episode.py`
 
 ### 4. Myriad Echoes
 - **Modalities**: Video + Audio + Image
@@ -61,7 +63,7 @@ python run_mm_agent.py
 
 # Phantom Soldiers in the Fog
 cd eval/game/Phantom_Soldiers_in_the_Fog
-python eval-oepnai-multi-episode.py --difficulty medium --num_episodes 10
+python eval-openai-multi-episode.py --difficulty medium --num_episodes 10
 
 # Myriad Echoes
 cd eval/game/Myriad_Echoes
@@ -109,4 +111,20 @@ omniplay/
 ## 📄 License
 
 Open-source project for research and evaluation purposes. Please comply with relevant API service terms when using.
+
+## 📖 Citation
+
+If you use OmniPlay in your research, please cite our paper:
+
+```bibtex
+@misc{bie2025omniplaybenchmarkingomnimodalmodels,
+      title={OmniPlay: Benchmarking Omni-Modal Models on Omni-Modal Game Playing},
+      author={Fuqing Bie and Shiyu Huang and Xijia Tao and Zhiqin Fang and Leyi Pan and Junzhe Chen and Min Ren and Liuyu Xiang and Zhaofeng He},
+      year={2025},
+      eprint={2508.04361},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2508.04361},
+}
+```
 

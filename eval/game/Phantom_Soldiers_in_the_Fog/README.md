@@ -6,19 +6,19 @@ This repository contains evaluation scripts for testing AI models on a cooperati
 
 The evaluation suite includes three main scripts:
 
-1. **`eval-oepnai-multi-episode.py`** - Direct video input evaluation
-2. **`eval-oepnai-video-frame-multi-episode.py`** - Video frame extraction evaluation  
+1. **`eval-openai-multi-episode.py`** - Direct video input evaluation
+2. **`eval-openai-video-frame-multi-episode.py`** - Video frame extraction evaluation  
 3. **`eval-baichuan-multi-episode.py`** - Baichuan model evaluation
 
 ## Key Differences Between Video Evaluation Scripts
 
-### Direct Video Input (`eval-oepnai-multi-episode.py`)
+### Direct Video Input (`eval-openai-multi-episode.py`)
 - Sends video data directly to the API as base64-encoded video
 - Supports native video processing by models that accept video modality
 - Uses `modalities: ["text", "audio", "video"]` in API calls
 - More efficient for models with built-in video understanding
 
-### Video Frame Extraction (`eval-oepnai-video-frame-multi-episode.py`)
+### Video Frame Extraction (`eval-openai-video-frame-multi-episode.py`)
 - Extracts frames from video at 0.5-second intervals using MoviePy
 - Converts video sequences into multiple image inputs
 - Sends image sequences instead of video to the API
@@ -74,12 +74,12 @@ pip install numpy pillow requests opencv-python moviepy gym
 
 #### Direct Video Input Evaluation
 ```bash
-python eval-oepnai-multi-episode.py --difficulty medium --num_episodes 10
+python eval-openai-multi-episode.py --difficulty medium --num_episodes 10
 ```
 
 #### Video Frame Extraction Evaluation  
 ```bash
-python eval-oepnai-video-frame-multi-episode.py --difficulty medium --num_episodes 10
+python eval-openai-video-frame-multi-episode.py --difficulty medium --num_episodes 10
 ```
 
 #### Baichuan Model Evaluation
@@ -111,7 +111,7 @@ python eval-baichuan-multi-episode.py --difficulty medium --num_episodes 10
 #### Standard Evaluation
 ```bash
 # Medium difficulty, 5 episodes, save media
-python eval-oepnai-multi-episode.py \
+python eval-openai-multi-episode.py \
     --difficulty medium \
     --num_episodes 5 \
     --max_rounds 100 \
@@ -121,7 +121,7 @@ python eval-oepnai-multi-episode.py \
 #### High Difficulty Evaluation
 ```bash
 # Hard difficulty with probabilistic commands
-python eval-oepnai-video-frame-multi-episode.py \
+python eval-openai-video-frame-multi-episode.py \
     --difficulty hard \
     --num_episodes 3 \
     --probabilistic_commands \
@@ -131,7 +131,7 @@ python eval-oepnai-video-frame-multi-episode.py \
 #### Custom Model Evaluation
 ```bash
 # Custom model with specific settings
-python eval-oepnai-multi-episode.py \
+python eval-openai-multi-episode.py \
     --model_name "gpt-4o" \
     --difficulty normal \
     --num_episodes 10 \
