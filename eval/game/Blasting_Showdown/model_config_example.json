@@ -1,0 +1,31 @@
+[
+    {
+        "api_base": "",
+        "api_key": "EMPTY",
+        "model": "",
+        "player_id": 0,
+        "description": "Qwen2.5 Omni 7B"
+    },
+    {
+        "api_base": "",
+        "api_key": "EMPTY",
+        "model": "",
+        "player_id": 1,
+        "description": "MiniCPM-o-2.6"
+    },
+    {
+        "api_base": "",
+        "api_key": "EMPTY",
+        "model": "",
+        "player_id": 2,
+        "description": "Gemini 2.5 Flash"
+    },
+    {
+        "api_base": "",
+        "api_key": "EMPTY",
+        "model": "",
+        "player_id": 3,
+        "description": "Gemini 2.5 Pro"
+    }
+]
+
