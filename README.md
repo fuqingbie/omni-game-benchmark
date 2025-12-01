@@ -27,13 +27,23 @@
 
 ## 📖 Overview
 
-**OmniPlay** is a comprehensive benchmark for evaluating Large Multimodal Models (LMMs) on diverse gaming tasks that require understanding and reasoning across **visual**, **audio**, and **textual** modalities simultaneously.
+While generalist foundation models like Gemini and GPT-4o demonstrate impressive multi-modal competence, existing evaluations fail to test their intelligence in dynamic, interactive worlds. Static benchmarks lack agency, while interactive benchmarks suffer from a severe **modal bottleneck**, typically ignoring crucial auditory and temporal cues.
+
+**OmniPlay** is a diagnostic benchmark designed not just to evaluate, but to **probe the fusion and reasoning capabilities** of agentic models across the full sensory spectrum. Built on a core philosophy of **modality interdependence**, OmniPlay comprises a suite of five game environments that systematically create scenarios of both synergy and conflict, forcing agents to perform genuine cross-modal reasoning.
+
+### 🔬 Key Findings
+
+Our comprehensive evaluation of six leading omni-modal models reveals:
+
+- **Critical Dichotomy**: Models exhibit superhuman performance on high-fidelity memory tasks but suffer from systemic failures in challenges requiring robust reasoning and strategic planning
+- **Brittle Fusion Mechanisms**: Performance degradation under modality conflict stems from fragile cross-modal integration
+- **"Less is More" Paradox**: Removing sensory information can paradoxically improve performance, suggesting over-reliance on certain modalities
 
 ### ✨ Key Features
 
 - 🎯 **5 Diverse Games** — Strategy, puzzle, rhythm, navigation, and tactical genres
 - 🎥 **True Multimodal Evaluation** — Video, audio, image, and state-based inputs
-- 🤖 **Unified Evaluation Framework** — Single entry point for all games and models
+- 🔬 **Modality Interdependence** — Scenarios designed for synergy and conflict testing
 - 📊 **Standardized Metrics** — Fair cross-model comparison with normalized scores
 - 🔧 **Extensible Architecture** — Easy to add new games and models
 
@@ -167,15 +177,16 @@ eval/game/
 └── benchmark_config.yaml        # Configuration template
 ```
 
-### Supported Models
+### Evaluated Models
 
-| Provider | Models | Video Mode | Audio | Status |
-|:---------|:-------|:-----------|:------|:-------|
-| **OpenAI** | GPT-4o, GPT-4V | Direct / Frames | ✅ | ✅ Tested |
-| **Baichuan** | Baichuan-Omni | File Upload | ✅ | ✅ Tested |
-| **Qwen** | Qwen-VL-Max | Frames | ✅ | ✅ Tested |
-| **Google** | Gemini Pro | Direct | ✅ | 🔄 Beta |
-| **Claude** | Claude 3.5 | Frames | ❌ | 🔄 Beta |
+| Provider | Model | Video | Audio | Leaderboard Rank |
+|:---------|:------|:-----:|:-----:|:----------------:|
+| **Google** | Gemini 2.5 Pro | ✅ | ✅ | 🥇 1st |
+| **Google** | Gemini 2.5 Flash | ✅ | ✅ | 🥈 2nd |
+| **Baichuan** | Baichuan-Omni-1.5 | ✅ | ✅ | 🥉 3rd |
+| **OpenBMB** | MiniCPM-o-2.6 | ✅ | ✅ | 4th |
+| **Open** | VITA-1.5 | ✅ | ✅ | 5th |
+| **Alibaba** | Qwen-2.5-Omni | ✅ | ✅ | 6th |
 
 ### Adding Custom Models
 
@@ -194,7 +205,7 @@ registry.register(
 
 ## 🏆 Leaderboard
 
-> **Last Updated**: December 2024 | [Full Leaderboard →](docs/LEADERBOARD.md)
+> **Last Updated**: October 2025 | [Full Leaderboard →](docs/LEADERBOARD.md)
 
 ### 🥇 Overall Ranking
 

@@ -1,6 +1,6 @@
 # 🏆 OmniPlay Leaderboard
 
-> **Last Updated**: December 2024
+> **Last Updated**: October 2025
 
 This document contains the complete leaderboard for the OmniPlay benchmark, including detailed per-game metrics and historical performance tracking.
 
