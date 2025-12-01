@@ -27,12 +27,12 @@
 
 ## 📖 Overview
 
-**OmniPlay** is a benchmark for evaluating omni-modal AI models through interactive game environments. Unlike static image/text benchmarks, OmniPlay tests how well models can see, hear, and act simultaneously in dynamic scenarios.
+**OmniPlay** is a benchmark for evaluating omni-modal AI models through interactive game environments. We test how well models can process **🎬 Video**, **🔊 Audio**, **🖼️ Image**, and **📝 Text** simultaneously in dynamic scenarios — not just understand them in isolation, but reason across all modalities to take actions.
 
 ### Why OmniPlay?
 
 - 🎮 **Interactive**: Models must take actions in real-time game environments
-- 👁️ **Truly Multimodal**: Tests video, audio, and image understanding together
+- 🌐 **Truly Omni-Modal**: Tests video, audio, image, and text understanding together
 - 🧠 **Reasoning Required**: Games demand cross-modal reasoning, not just perception
 
 ### ✨ Key Features
