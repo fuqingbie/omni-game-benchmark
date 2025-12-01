@@ -1,130 +1,333 @@
-# OmniPlay - Multimodal AI Gaming Evaluation Platform
+<p align="center">
+  <img src="docs/assets/omniplay-logo.png" alt="OmniPlay Logo" width="280"/>
+</p>
 
-📄 **Paper**: [OmniPlay: Benchmarking Omni-Modal Models on Omni-Modal Game Playing](https://arxiv.org/abs/2508.04361)
+<h1 align="center">🎮 OmniPlay Benchmark</h1>
 
-A comprehensive platform for evaluating large language models' performance in multimodal gaming environments, supporting visual, audio, and text input modalities.
+<p align="center">
+  <b>Benchmarking Omni-Modal Models on Omni-Modal Game Playing</b>
+</p>
 
-## 🎮 Supported Games
+<p align="center">
+  <a href="https://arxiv.org/abs/2508.04361"><img src="https://img.shields.io/badge/arXiv-2508.04361-b31b1b.svg" alt="arXiv"></a>
+  <a href="#-leaderboard"><img src="https://img.shields.io/badge/🏆-Leaderboard-blue" alt="Leaderboard"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
+  <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python">
+</p>
 
-### 1. Whispered Pathfinding
-- **Modalities**: Image + Audio + Vector Information
-- **Task**: Navigate through maze to find targets based on voice guidance
-- **Difficulty**: Easy/Medium/Hard
-- **Scripts**: `test_openai.py`, `test_baichuan.py`
+<p align="center">
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-games">Games</a> •
+  <a href="#-unified-framework">Framework</a> •
+  <a href="#-leaderboard">Leaderboard</a> •
+  <a href="#-citation">Citation</a>
+</p>
 
-### 2. The Alchemist's Melody
-- **Modalities**: Image + Audio + State Vector
-- **Task**: Learn and reproduce musical sequence patterns
-- **Features**: Random color-note mapping, requires learning capability
-- **Scripts**: `run_mm_agent.py`, `run_baichuan_agent.py`
+---
 
-### 3. Phantom Soldiers in the Fog
-- **Modalities**: Video/Image Sequence + Audio + Vector Data
-- **Task**: Command military units to complete objectives
-- **Features**: Hidden target discovery, movement uncertainty
+## 📖 Overview
+
+**OmniPlay** is a comprehensive benchmark for evaluating Large Multimodal Models (LMMs) on diverse gaming tasks that require understanding and reasoning across **visual**, **audio**, and **textual** modalities simultaneously.
+
+### ✨ Key Features
+
+- 🎯 **5 Diverse Games** — Strategy, puzzle, rhythm, navigation, and tactical genres
+- 🎥 **True Multimodal Evaluation** — Video, audio, image, and state-based inputs
+- 🤖 **Unified Evaluation Framework** — Single entry point for all games and models
+- 📊 **Standardized Metrics** — Fair cross-model comparison with normalized scores
+- 🔧 **Extensible Architecture** — Easy to add new games and models
+
+---
+
+## 🎮 Games
+
+| Game | Modalities | Task | Key Skills Evaluated |
+|:-----|:-----------|:-----|:---------------------|
+| **🧪 The Alchemist's Melody** | 🖼️ Image + 🔊 Audio + 📝 State | Learn color-note mappings to reproduce sequences | Audio-visual association, pattern learning |
+| **🎵 Myriad Echoes** | 🎬 Video + 🔊 Audio + 🖼️ Image | Observe and reproduce audiovisual sequences | Sequence memory, coordinate prediction |
+| **💣 Blasting Showdown** | 🖼️ Image + 🔊 Audio + 📝 State | Multi-agent Bomberman battles | Strategic planning, real-time decision |
+| **👻 Phantom Soldiers** | 🎬 Video + 🔊 Audio + 📝 Vector | Command units to discover hidden targets | Tactical reasoning, spatial awareness |
+| **🔊 Whispered Pathfinding** | 🖼️ Image + 🔊 Audio + 📝 Vector | Navigate maze using voice guidance | Audio comprehension, spatial navigation |
+
+<details>
+<summary><b>📌 Click to expand game details</b></summary>
+
+### 🧪 The Alchemist's Melody
+A sound-based puzzle game where AI must learn the hidden mapping between colors and musical notes, then reproduce increasingly complex sequences.
+- **Difficulty Levels**: Easy (4 elements) / Normal (6 elements) / Hard (8 elements)
+- **Metrics**: Accuracy, Steps to Complete, Learning Curve
+- **Scripts**: `run_mm_agent.py`, `multimodal_agent_baichuan.py`
+
+### 🎵 Myriad Echoes  
+A rhythm memory game requiring observation of icon-sound sequences followed by accurate reproduction.
+- **Difficulty Levels**: Level 1-3 (6-15 icons)
+- **Metrics**: Sequence Accuracy, Coordinate Precision, Success Rate
+- **Scripts**: `eval_openai_multi_episode.py`, `eval_baichuan_multi_episode.py`
+
+### 💣 Blasting Showdown
+Bomberman-style multi-agent competitive game where AI models battle against each other.
+- **Features**: Real-time strategy, Multi-AI interaction, Gymnasium environment
+- **Metrics**: Kill Count, Survival Rate, Win Rate, Strategy Score
+- **Scripts**: `multi_model_game.py`, `start_ai_game.py`
+
+### 👻 Phantom Soldiers in the Fog
+A tactical command game where AI directs hidden units to complete objectives under fog of war.
+- **Difficulty Levels**: Normal / Medium / Hard
+- **Metrics**: Normalized Score, Objective Completion, Command Compliance
 - **Scripts**: `eval-openai-multi-episode.py`, `eval-baichuan-multi-episode.py`
 
-### 4. Myriad Echoes
-- **Modalities**: Video + Audio + Image
-- **Task**: Observe and reproduce audiovisual sequences
-- **Evaluation**: Sequence parsing ability, coordinate prediction accuracy
-- **Scripts**: `eval_baichuan_multi_episode.py`, `eval_openai_multi_episode.py`
+### 🔊 Whispered Pathfinding
+A 3D maze navigation game where AI follows voice-based directional guidance to reach the goal.
+- **Difficulty Levels**: Easy / Medium / Hard (maze complexity)
+- **Metrics**: Success Rate, Path Efficiency, Step Count
+- **Scripts**: `test_openai.py`, `test_baichuan.py`
 
-### 5. Blasting Showdown
-- **Modalities**: Image + Audio + Game State
-- **Task**: Multi-AI model competitive battles
-- **Features**: Real-time strategic decisions, multi-agent interaction
-- **Scripts**: `start_ai_game.py`, `multi_model_game.py`
+</details>
 
-## 🚀 Quick Start
+---
 
-### 1. Environment Setup
+## ⚡ Quick Start
+
+### Installation
+
 ```bash
-pip install pygame numpy pillow requests gymnasium opencv-python moviepy
+# Clone the repository
+git clone https://github.com/fuqingbie/omni-game-benchmark.git
+cd omni-game-benchmark
+
+# Install core dependencies
+pip install pygame numpy pillow requests gymnasium opencv-python
+
+# Install audio/video processing (required for some games)
+pip install moviepy librosa soundfile
 ```
 
-### 2. API Configuration
-Set API information in configuration files within each game directory:
-```python
-API_BASE = "your_api_endpoint"
-API_KEY = "your_api_key"
-MODEL_CHAT = "your_model_name"
+### Configure API Keys
+
+```bash
+# Set environment variables
+export OPENAI_API_KEY="your-openai-key"
+export BAICHUAN_API_KEY="your-baichuan-key"      # Optional
+export DASHSCOPE_API_KEY="your-qwen-key"         # Optional
 ```
 
-### 3. Run Evaluations
-```bash
-# Whispered Pathfinding
-cd eval/game/Whispered_Pathfinding
-python test_openai.py --difficulty medium --rounds 5
+### Run Evaluation
 
+#### Option 1: Unified Framework (Recommended) 🚀
+
+```bash
+# Run single game with specific model
+python eval/game/run_benchmark.py --game alchemist_melody --model gpt-4o --episodes 10
+
+# Run multiple games with config file
+python eval/game/run_benchmark.py --config eval/game/benchmark_config.yaml
+
+# List available games and models
+python eval/game/run_benchmark.py --list-games
+python eval/game/run_benchmark.py --list-models
+```
+
+#### Option 2: Individual Game Scripts
+
+```bash
 # The Alchemist's Melody
-cd eval/game/The_Alchemist-s_Melody
-python run_mm_agent.py
-
-# Phantom Soldiers in the Fog
-cd eval/game/Phantom_Soldiers_in_the_Fog
-python eval-openai-multi-episode.py --difficulty medium --num_episodes 10
+cd eval/game/The_Alchemist-s_Melody && python run_mm_agent.py --episodes 10
 
 # Myriad Echoes
-cd eval/game/Myriad_Echoes
-python eval_openai_multi_episode.py
+cd eval/game/Myriad_Echoes && python eval_openai_multi_episode.py --num_episodes 10
 
 # Blasting Showdown
-cd eval/game/Blasting_Showdown
-python start_ai_game.py --config model_config.json
+cd eval/game/Blasting_Showdown && python multi_model_game.py --config model_config.json
+
+# Phantom Soldiers in the Fog
+cd eval/game/Phantom_Soldiers_in_the_Fog && python eval-openai-multi-episode.py --num_episodes 10
+
+# Whispered Pathfinding
+cd eval/game/Whispered_Pathfinding && python test_openai.py --difficulty medium --rounds 5
 ```
+
+---
+
+## 🔧 Unified Framework
+
+OmniPlay provides a unified evaluation framework in `eval/game/common/` for consistent benchmarking.
+
+### Architecture
+
+```
+eval/game/
+├── common/                      # 🔧 Unified Framework
+│   ├── model_registry.py        # Model capability management
+│   ├── video_processor.py       # Video/frame processing modes
+│   ├── result_schema.py         # Standardized result format
+│   ├── game_registry.py         # Game registration & discovery
+│   ├── runner.py                # Batch evaluation runner
+│   └── statistics.py            # Metrics & analysis
+├── run_benchmark.py             # 🚀 Single entry point
+└── benchmark_config.yaml        # Configuration template
+```
+
+### Supported Models
+
+| Provider | Models | Video Mode | Audio | Status |
+|:---------|:-------|:-----------|:------|:-------|
+| **OpenAI** | GPT-4o, GPT-4V | Direct / Frames | ✅ | ✅ Tested |
+| **Baichuan** | Baichuan-Omni | File Upload | ✅ | ✅ Tested |
+| **Qwen** | Qwen-VL-Max | Frames | ✅ | ✅ Tested |
+| **Google** | Gemini Pro | Direct | ✅ | 🔄 Beta |
+| **Claude** | Claude 3.5 | Frames | ❌ | 🔄 Beta |
+
+### Adding Custom Models
+
+```python
+from eval.game.common import get_default_registry
+
+registry = get_default_registry()
+registry.register(
+    name="my-custom-model",
+    api_base="https://api.example.com/v1",
+    capability_preset="openai",  # or "baichuan", "qwen", "gemini"
+)
+```
+
+---
+
+## 🏆 Leaderboard
+
+> **Last Updated**: December 2024 | [Full Leaderboard →](docs/LEADERBOARD.md)
+
+### 🥇 Overall Ranking
+
+| Rank | Model | Whispered | Echoes | Phantom | Alchemist | Blasting |
+|:----:|:------|:---------:|:------:|:-------:|:---------:|:--------:|
+| Ref | **Human Expert** | 100.0 | 100.0 | 100.0 | 100.0 | - |
+| 🥇 | **Gemini 2.5 Pro** | 97.5 | 223.4 | 83.2 | 28.4 | 36.11% |
+| 🥈 | **Gemini 2.5 Flash** | 95.5 | 23.7 | 49.1 | 10.5 | 28.95% |
+| 🥉 | **Baichuan-Omni-1.5** | 88.7 | -2.3 | -3.5 | 10.2 | 17.65% |
+| 4 | MiniCPM-o-2.6 | 86.4 | -1.3 | -30.7 | 7.7 | 19.35% |
+| 5 | VITA-1.5 | 81.9 | -3.6 | -52.2 | -8.9 | 7.41% |
+| 6 | Qwen-2.5-Omni | 73.6 | -2.7 | -7.8 | 9.2 | 11.76% |
+
+> 📊 *Scores normalized to Human Expert (100.0). Negative = below random baseline. Blasting uses Win Rate %.*
+
+### 🏅 Per-Game Champions
+
+| Game | Best Model | Score | Insight |
+|:-----|:-----------|:-----:|:--------|
+| 🔊 Whispered Pathfinding | Gemini 2.5 Pro | 97.5 | Near human-level audio navigation |
+| 🎵 Myriad Echoes | Gemini 2.5 Pro | 223.4 | Exceeds human performance |
+| 👻 Phantom Soldiers | Gemini 2.5 Pro | 83.2 | Best tactical reasoning |
+| 🧪 Alchemist's Melody | Gemini 2.5 Pro | 28.4 | Audio-visual learning is hard |
+| 💣 Blasting Showdown | Gemini 2.5 Pro | 36.11% | Highest win rate |
+
+---
 
 ## 📊 Evaluation Metrics
 
-- **Success Rate**: Task completion percentage
-- **Efficiency**: Average completion steps/time
-- **Accuracy**: Action execution precision
-- **Adaptability**: Cross-difficulty performance consistency
-- **Multimodal Understanding**: Effectiveness of utilizing information from each modality
+### Universal Metrics
 
-## 🛠️ Supported Models
+| Metric | Description | Formula |
+|:-------|:------------|:--------|
+| **Success Rate** | Task completion percentage | `completed / total × 100` |
+| **Efficiency** | Steps relative to optimal | `optimal_steps / actual_steps × 100` |
+| **Accuracy** | Action/prediction precision | Game-specific |
+| **Adaptability** | Cross-difficulty consistency | `std(scores) / mean(scores)` |
+| **Multimodal Score** | Modality utilization effectiveness | Weighted combination |
 
-- **OpenAI**: All models compatible with OpenAI API interface
-- **Baichuan**: Multimodal FastAPI service
-- **General**: API endpoints compatible with OpenAI format
+### Overall Score Calculation
+
+$$\text{Score}_{\text{overall}} = \sum_{g \in \text{Games}} w_g \cdot \text{normalize}(\text{metrics}_g)$$
+
+Where weights $w_g$ are based on game complexity and modality diversity.
+
+---
 
 ## 📁 Project Structure
 
 ```
-omniplay/
-├── eval/game/                    # Game evaluation environments
-│   ├── Whispered_Pathfinding/    # Maze pathfinding
-│   ├── The_Alchemist-s_Melody/   # Musical sequences
-│   ├── Phantom_Soldiers_in_the_Fog/  # Tactical command
-│   ├── Myriad_Echoes/            # Rhythm memory
-│   └── Blasting_Showdown/        # Bomberman battles
-└── game/assets-necessay/         # Shared game resources
+omni-game-benchmark/
+├── eval/game/
+│   ├── common/                      # 🔧 Unified framework
+│   │   ├── model_registry.py        # Model capabilities
+│   │   ├── video_processor.py       # Video processing
+│   │   ├── result_schema.py         # Result format
+│   │   ├── game_registry.py         # Game registry
+│   │   ├── runner.py                # Evaluation runner
+│   │   └── statistics.py            # Statistics
+│   ├── Blasting_Showdown/           # 💣 Bomberman game
+│   ├── The_Alchemist-s_Melody/      # 🧪 Sound puzzle
+│   ├── Myriad_Echoes/               # 🎵 Rhythm memory
+│   ├── Phantom_Soldiers_in_the_Fog/ # 👻 Tactical command
+│   ├── Whispered_Pathfinding/       # 🔊 Audio navigation
+│   ├── assets-necessay/             # Shared assets
+│   ├── run_benchmark.py             # 🚀 Entry point
+│   └── benchmark_config.yaml        # Config template
+├── docs/
+│   ├── LEADERBOARD.md               # Full leaderboard
+│   └── assets/                      # Documentation assets
+├── requirements.txt
+├── CONTRIBUTING.md
+├── LICENSE
+└── README.md
 ```
+
+---
 
 ## ⚠️ Important Notes
 
-- **Single Instance**: Avoid running multiple game instances simultaneously
-- **Resource Requirements**: Ensure sufficient memory and computational resources
-- **API Limitations**: Be mindful of model call frequency and costs
-- **Dependency Check**: Some games require additional audio/video processing libraries
+| Item | Recommendation |
+|:-----|:---------------|
+| **Python Version** | 3.8+ required |
+| **RAM** | 8GB+ recommended |
+| **GPU** | Optional, speeds up video processing |
+| **API Costs** | Monitor usage, especially for video models |
+| **Concurrency** | Run one game instance at a time |
+| **Audio Libs** | Install `librosa`, `soundfile` for audio games |
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+### Ways to Contribute
+
+- 🎮 **Add New Games** — Implement `BaseGameEnv` interface
+- 🤖 **Add New Models** — Register in `model_registry.py`
+- 📊 **Submit Results** — Run evaluations and update leaderboard
+- 🐛 **Report Issues** — Open GitHub issues
+- 📖 **Improve Docs** — Enhance documentation
+
+---
 
 ## 📄 License
 
-Open-source project for research and evaluation purposes. Please comply with relevant API service terms when using.
+This project is licensed under the MIT License - see [LICENSE](LICENSE) for details.
+
+---
 
 ## 📖 Citation
 
 If you use OmniPlay in your research, please cite our paper:
 
 ```bibtex
-@misc{bie2025omniplaybenchmarkingomnimodalmodels,
-      title={OmniPlay: Benchmarking Omni-Modal Models on Omni-Modal Game Playing},
-      author={Fuqing Bie and Shiyu Huang and Xijia Tao and Zhiqin Fang and Leyi Pan and Junzhe Chen and Min Ren and Liuyu Xiang and Zhaofeng He},
-      year={2025},
-      eprint={2508.04361},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2508.04361},
+@misc{bie2025omniplay,
+    title={OmniPlay: Benchmarking Omni-Modal Models on Omni-Modal Game Playing},
+    author={Fuqing Bie and Shiyu Huang and Xijia Tao and Zhiqin Fang and Leyi Pan and Junzhe Chen and Min Ren and Liuyu Xiang and Zhaofeng He},
+    year={2025},
+    eprint={2508.04361},
+    archivePrefix={arXiv},
+    primaryClass={cs.AI},
+    url={https://arxiv.org/abs/2508.04361},
 }
 ```
+
+---
+
+<p align="center">
+  <b>Made with ❤️ by the OmniPlay Team</b>
+  <br>
+  <a href="https://github.com/fuqingbie/omni-game-benchmark">GitHub</a> •
+  <a href="https://arxiv.org/abs/2508.04361">Paper</a>
+</p>
 

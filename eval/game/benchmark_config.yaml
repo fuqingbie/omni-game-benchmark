@@ -1,0 +1,159 @@
+# Omni-Game-Benchmark Configuration
+# Example configuration file for running unified evaluations
+
+# Output settings
+output:
+  results_dir: "./results"
+  save_videos: true
+  save_frames: false
+  verbose: true
+
+# Global defaults
+defaults:
+  episodes: 10
+  max_steps: 1000
+  timeout: 300  # seconds
+
+# Models to evaluate
+models:
+  # OpenAI GPT-4o with video input
+  - name: "gpt-4o"
+    api_base: "https://api.openai.com/v1"
+    api_key_env: "OPENAI_API_KEY"
+    capability_preset: "openai"
+    enabled: true
+
+  # OpenAI GPT-4o with frame extraction
+  - name: "gpt-4o-frames"
+    api_base: "https://api.openai.com/v1"
+    api_key_env: "OPENAI_API_KEY"
+    capability_preset: "openai-frames"
+    enabled: true
+
+  # Baichuan model
+  - name: "baichuan"
+    api_base: "https://api.baichuan-ai.com/v1"
+    api_key_env: "BAICHUAN_API_KEY"
+    capability_preset: "baichuan"
+    enabled: false
+
+  # Qwen Vision model
+  - name: "qwen-vl"
+    api_base: "https://dashscope.aliyuncs.com/api/v1"
+    api_key_env: "QWEN_API_KEY"
+    capability_preset: "qwen"
+    enabled: false
+
+  # Google Gemini Pro
+  - name: "gemini-pro"
+    api_base: "https://generativelanguage.googleapis.com/v1beta"
+    api_key_env: "GOOGLE_API_KEY"
+    capability_preset: "gemini"
+    enabled: false
+
+# Games to evaluate
+games:
+  # Blasting Showdown - Bomberman style game
+  - name: "blasting_showdown"
+    enabled: true
+    episodes: 10
+    config:
+      grid_size: 11
+      max_players: 4
+      difficulty: "normal"
+      ai_models: []  # Will be filled by runner
+
+  # The Alchemist's Melody - Sound puzzle game
+  - name: "alchemist_melody"
+    enabled: true
+    episodes: 5
+    config:
+      num_elements: 4
+      max_steps: 100
+      record_audio: true
+
+  # Myriad Echoes - Rhythm memory game
+  - name: "myriad_echoes"
+    enabled: true
+    episodes: 10
+    config:
+      difficulty: "medium"
+      sequence_length: 8
+
+  # Phantom Soldiers in the Fog - Strategy game
+  - name: "phantom_soldiers"
+    enabled: true
+    episodes: 5
+    config:
+      team_size: 4
+      fog_enabled: true
+      record_video: true
+
+  # Whispered Pathfinding - 3D maze navigation
+  - name: "whispered_pathfinding"
+    enabled: true
+    episodes: 10
+    config:
+      maze_size: 15
+      audio_enabled: true
+      max_steps: 500
+
+# Evaluation scenarios (optional)
+scenarios:
+  # Quick test with few episodes
+  quick_test:
+    games: ["alchemist_melody"]
+    models: ["gpt-4o"]
+    episodes: 2
+
+  # Full benchmark
+  full_benchmark:
+    games: all
+    models: all
+    episodes: 10
+
+  # Audio-focused evaluation
+  audio_focused:
+    games: ["alchemist_melody", "myriad_echoes", "whispered_pathfinding"]
+    models: ["gpt-4o"]
+    episodes: 5
+
+  # Visual-focused evaluation
+  visual_focused:
+    games: ["blasting_showdown", "phantom_soldiers"]
+    models: ["gpt-4o", "gpt-4o-frames"]
+    episodes: 5
+
+# Metrics and reporting
+metrics:
+  # Per-game metric weights for final score
+  weights:
+    blasting_showdown:
+      survival_rate: 0.3
+      kill_count: 0.3
+      strategy_score: 0.4
+    alchemist_melody:
+      accuracy: 0.4
+      sequence_length: 0.3
+      time_efficiency: 0.3
+    myriad_echoes:
+      accuracy: 0.5
+      reaction_time: 0.3
+      pattern_recognition: 0.2
+    phantom_soldiers:
+      win_rate: 0.4
+      unit_survival: 0.3
+      strategic_positioning: 0.3
+    whispered_pathfinding:
+      completion_rate: 0.4
+      path_efficiency: 0.3
+      audio_utilization: 0.3
+
+  # Aggregation method
+  aggregation: "weighted_mean"  # or "mean", "median", "min"
+
+# Logging settings
+logging:
+  level: "INFO"
+  file: "benchmark.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

@@ -1302,7 +1302,7 @@ class SoundAlchemistEnv(gym.Env):
     
     
     def _add_to_sequence(self, step_type: str, **kwargs):
-        """Add a step to the current episode sequence"""
+        """Add a step to the current episode sequence and save incrementally"""
         if not self.save_sequence:
             return
             
@@ -1318,9 +1318,41 @@ class SoundAlchemistEnv(gym.Env):
             
             self.current_episode_sequence.append(step_data)
             
+            # Incremental save: save after each step to prevent data loss
+            self._save_episode_sequence_incremental()
+            
         except Exception as e:
             if self.verbose:
                 print(f"Error adding to sequence: {e}")
+    
+    def _save_episode_sequence_incremental(self):
+        """Incrementally save episode sequence data (overwrites the same file during an episode)"""
+        if not self.current_episode_sequence:
+            return
+            
+        try:
+            # Use a fixed filename for the current episode (without timestamp for incremental updates)
+            filename = f"episode_{self.episode_count:04d}_current.json"
+            filepath = os.path.join(self.sequence_save_dir, filename)
+            
+            # Clean sequence data
+            cleaned_sequence = self._clean_sequence_data(self.current_episode_sequence)
+            
+            episode_data = {
+                "episode": self.episode_count,
+                "timestamp": time.time(),
+                "difficulty": self.difficulty,
+                "total_steps": len(cleaned_sequence),
+                "status": "in_progress",
+                "sequence": cleaned_sequence
+            }
+            
+            with open(filepath, 'w', encoding='utf-8') as f:
+                json.dump(episode_data, f, indent=2, ensure_ascii=False, default=self._json_serializer)
+                
+        except Exception as e:
+            if hasattr(self, '_verbose') and self._verbose:
+                print(f"Error saving incremental episode sequence: {e}")
 
     @property
     def verbose(self):
@@ -1333,7 +1365,7 @@ class SoundAlchemistEnv(gym.Env):
         self._verbose = value
 
     def _save_episode_sequence(self):
-        """Save the episode sequence data"""
+        """Save the episode sequence data (final version with timestamp)"""
         if not self.current_episode_sequence:
             return
             
@@ -1350,6 +1382,7 @@ class SoundAlchemistEnv(gym.Env):
                 "timestamp": timestamp,
                 "difficulty": self.difficulty,
                 "total_steps": len(cleaned_sequence),
+                "status": "completed",
                 "sequence": cleaned_sequence
             }
             
@@ -1357,7 +1390,18 @@ class SoundAlchemistEnv(gym.Env):
                 json.dump(episode_data, f, indent=2, ensure_ascii=False, default=self._json_serializer)
             
             if hasattr(self, '_verbose') and self._verbose:
-                print(f"Saved episode sequence to: {filepath}")
+                print(f"Saved final episode sequence to: {filepath}")
+            
+            # Remove the incremental save file after final save
+            incremental_filepath = os.path.join(self.sequence_save_dir, f"episode_{self.episode_count:04d}_current.json")
+            if os.path.exists(incremental_filepath):
+                try:
+                    os.remove(incremental_filepath)
+                    if hasattr(self, '_verbose') and self._verbose:
+                        print(f"Removed incremental file: {incremental_filepath}")
+                except Exception as rm_e:
+                    if hasattr(self, '_verbose') and self._verbose:
+                        print(f"Warning: Could not remove incremental file: {rm_e}")
                 
         except Exception as e:
             if hasattr(self, '_verbose') and self._verbose:
