@@ -27,25 +27,20 @@
 
 ## 📖 Overview
 
-While generalist foundation models like Gemini and GPT-4o demonstrate impressive multi-modal competence, existing evaluations fail to test their intelligence in dynamic, interactive worlds. Static benchmarks lack agency, while interactive benchmarks suffer from a severe **modal bottleneck**, typically ignoring crucial auditory and temporal cues.
+**OmniPlay** is a benchmark for evaluating omni-modal AI models through interactive game environments. Unlike static image/text benchmarks, OmniPlay tests how well models can see, hear, and act simultaneously in dynamic scenarios.
 
-**OmniPlay** is a diagnostic benchmark designed not just to evaluate, but to **probe the fusion and reasoning capabilities** of agentic models across the full sensory spectrum. Built on a core philosophy of **modality interdependence**, OmniPlay comprises a suite of five game environments that systematically create scenarios of both synergy and conflict, forcing agents to perform genuine cross-modal reasoning.
+### Why OmniPlay?
 
-### 🔬 Key Findings
-
-Our comprehensive evaluation of six leading omni-modal models reveals:
-
-- **Critical Dichotomy**: Models exhibit superhuman performance on high-fidelity memory tasks but suffer from systemic failures in challenges requiring robust reasoning and strategic planning
-- **Brittle Fusion Mechanisms**: Performance degradation under modality conflict stems from fragile cross-modal integration
-- **"Less is More" Paradox**: Removing sensory information can paradoxically improve performance, suggesting over-reliance on certain modalities
+- 🎮 **Interactive**: Models must take actions in real-time game environments
+- 👁️ **Truly Multimodal**: Tests video, audio, and image understanding together
+- 🧠 **Reasoning Required**: Games demand cross-modal reasoning, not just perception
 
 ### ✨ Key Features
 
 - 🎯 **5 Diverse Games** — Strategy, puzzle, rhythm, navigation, and tactical genres
-- 🎥 **True Multimodal Evaluation** — Video, audio, image, and state-based inputs
-- 🔬 **Modality Interdependence** — Scenarios designed for synergy and conflict testing
-- 📊 **Standardized Metrics** — Fair cross-model comparison with normalized scores
-- 🔧 **Extensible Architecture** — Easy to add new games and models
+- 🎥 **Video + Audio + Image** — Full multimodal input support
+- 📊 **Standardized Metrics** — Fair comparison with human baseline
+- 🔧 **Easy to Extend** — Add new games and models easily
 
 ---
 
