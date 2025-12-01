@@ -317,14 +317,14 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) for deta
 If you use OmniPlay in your research, please cite our paper:
 
 ```bibtex
-@misc{bie2025omniplay,
-    title={OmniPlay: Benchmarking Omni-Modal Models on Omni-Modal Game Playing},
-    author={Fuqing Bie and Shiyu Huang and Xijia Tao and Zhiqin Fang and Leyi Pan and Junzhe Chen and Min Ren and Liuyu Xiang and Zhaofeng He},
-    year={2025},
-    eprint={2508.04361},
-    archivePrefix={arXiv},
-    primaryClass={cs.AI},
-    url={https://arxiv.org/abs/2508.04361},
+@misc{bie2025omniplaybenchmarkingomnimodalmodels,
+      title={OmniPlay: Benchmarking Omni-Modal Models on Omni-Modal Game Playing}, 
+      author={Fuqing Bie and Shiyu Huang and Xijia Tao and Zhiqin Fang and Leyi Pan and Junzhe Chen and Min Ren and Liuyu Xiang and Zhaofeng He},
+      year={2025},
+      eprint={2508.04361},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2508.04361}, 
 }
 ```
 
