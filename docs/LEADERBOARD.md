@@ -201,16 +201,6 @@ Want to add your model to the leaderboard?
 
 ---
 
-## 📜 Changelog
-
-| Date | Update |
-|:-----|:-------|
-| 2024-12 | Initial leaderboard with 6 omni-modal models |
-| 2024-11 | Unified evaluation framework released |
-| 2024-10 | Benchmark v1.0 published |
-
----
-
 <p align="center">
   <a href="../README.md">← Back to README</a>
 </p>
