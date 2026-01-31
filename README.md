@@ -40,35 +40,45 @@
 
 <table align="center">
   <tr>
-    <td align="center" width="50%">
+    <td align="center" width="33%">
       <img src="docs/assets/demos/whispered_pathfinding.gif" width="100%" alt="Whispered Pathfinding"/>
       <br/>
       <b>🔊 Whispered Pathfinding</b>
       <br/>
       <i>3D maze navigation via voice guidance</i>
     </td>
-    <td align="center" width="50%">
+    <td align="center" width="33%">
       <img src="docs/assets/demos/blasting_showdown.gif" width="100%" alt="Blasting Showdown"/>
       <br/>
       <b>💣 Blasting Showdown</b>
       <br/>
       <i>Multi-agent Bomberman battles</i>
     </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
+    <td align="center" width="33%">
       <img src="docs/assets/demos/myriad_echoes.gif" width="100%" alt="Myriad Echoes"/>
       <br/>
       <b>🎵 Myriad Echoes</b>
       <br/>
       <i>Audiovisual sequence memory</i>
     </td>
-    <td align="center" width="50%">
+  </tr>
+  <tr>
+    <td align="center" width="33%">
       <img src="docs/assets/demos/phantom_soldiers.gif" width="100%" alt="Phantom Soldiers"/>
       <br/>
       <b>👻 Phantom Soldiers</b>
       <br/>
       <i>Tactical fog-of-war command</i>
+    </td>
+    <td align="center" width="33%">
+      <img src="docs/assets/demos/alchemist_melody.gif" width="100%" alt="The Alchemist's Melody"/>
+      <br/>
+      <b>🧪 The Alchemist's Melody</b>
+      <br/>
+      <i>Audio-visual color-note learning</i>
+    </td>
+    <td align="center" width="33%">
+      <!-- Placeholder for future game -->
     </td>
   </tr>
 </table>
@@ -298,6 +308,42 @@ registry.register(
 | 👻 Phantom Soldiers | Gemini 2.5 Pro | 83.2 | Best tactical reasoning |
 | 🧪 Alchemist's Melody | Gemini 2.5 Pro | 28.4 | Audio-visual learning is hard |
 | 💣 Blasting Showdown | Gemini 2.5 Pro | 36.11% | Highest win rate |
+
+### 📋 Detailed Results (Raw Scores)
+
+<details>
+<summary><b>📊 Click to expand full benchmark results</b></summary>
+
+#### Non-PvP Tasks (10 Sub-tasks)
+
+| Model | Whispered Pathfinding (Steps ↓) ||| Myriad Echoes (Score ↑) ||| Alchemist | Phantom Soldiers (Score ↑) ||| Avg. Rank |
+|:------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| | **Easy** | **Med.** | **Hard** | **Easy** | **Med.** | **Hard** | **Med.** | **Easy** | **Med.** | **Hard** | |
+| *Human Expert* | 5.2 | 8.3 | 15.6 | 3.70 | 2.50 | 2.60 | 87.66 | 100.0 | 99.60 | 98.50 | - |
+| **Gemini 2.5 Pro** | **7.6** | **10.2** | **36.2** | **4.70** | **4.00** | **7.80** | **43.15** | **83.51** | **78.81** | **91.62** | **1.0** |
+| Gemini 2.5 Flash | 16.1 | 23.2 | 37.15 | 0.00 | 0.00 | 1.90 | 32.05 | 80.39 | 31.20 | 73.54 | 2.7 |
+| Baichuan-Omni-1.5 | 23.1 | 31.0 | 84.7 | 0.20 | 0.10 | 0.00 | 31.82 | 29.15 | 11.50 | 19.60 | 3.3 |
+| MiniCPM-o-2.6 | 27.0 | 34.4 | 99.5 | 0.10 | 0.10 | 0.00 | 30.29 | 3.10 | 11.60 | 8.93 | 4.2 |
+| Qwen-2.5-Omni | 70.3 | 64.2 | 128.2 | 0.10 | 0.00 | 0.00 | 31.23 | 5.13 | 23.74 | 23.34 | 4.5 |
+| VITA-1.5 | 36.1 | 52.8 | 94.8 | 0.10 | 0.00 | 0.00 | 20.01 | 0.00 | 0.00 | 0.00 | 5.1 |
+| *Random Baseline* | 193.2 | 277.8 | 482.7 | 0.55 | 0.05 | 0.10 | 25.51 | 25.20 | 22.86 | 17.80 | - |
+
+> **Note**: For Whispered Pathfinding, lower steps (↓) is better. For all other tasks, higher scores (↑) are better.
+
+#### Competitive Evaluation: Blasting Showdown (AI-vs-AI Tournament)
+
+| Model | Wins / Total | Win Rate (%) | SD | SEM (%) | Rank |
+|:------|:------------:|:------------:|:--:|:-------:|:----:|
+| **Gemini 2.5 Pro** | 18 / 50 | **36.1%** | 0.480 | 6.8% | **1** |
+| Gemini 2.5 Flash | 14 / 50 | 28.9% | 0.453 | 6.4% | 2 |
+| MiniCPM-o-2.6 | 10 / 50 | 19.4% | 0.395 | 5.6% | 3 |
+| Baichuan-Omni-1.5 | 9 / 50 | 17.7% | 0.382 | 5.4% | 4 |
+| Qwen-2.5-Omni | 6 / 50 | 11.8% | 0.323 | 4.6% | 5 |
+| VITA-1.5 | 4 / 50 | 7.4% | 0.262 | 3.7% | 6 |
+
+> **Tournament Format**: Round-robin AI-vs-AI matches with 50 games per model. SD = Standard Deviation, SEM = Standard Error of the Mean.
+
+</details>
 
 ---
 
