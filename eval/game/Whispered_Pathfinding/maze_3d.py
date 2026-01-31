@@ -461,6 +461,7 @@ class MazeGame:
             icon_y_pos = ground_y_pos - height_adj - size_with_pulse // 2
             
             # Draw the icon
+            light_pillar_height = 0  # Default value for when goal_texture is not available
             if self.goal_texture:
                 scaled_goal = pygame.transform.scale(self.goal_texture, (size_with_pulse, size_with_pulse))
                 self.screen.blit(scaled_goal, (screen_x - size_with_pulse/2, icon_y_pos))

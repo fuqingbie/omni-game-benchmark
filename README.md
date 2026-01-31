@@ -5,17 +5,24 @@
 <h1 align="center">🎮 OmniPlay Benchmark</h1>
 
 <p align="center">
-  <b>Benchmarking Omni-Modal Models on Omni-Modal Game Playing</b>
+  <b>The First Diagnostic Benchmark for Omni-Modal Agentic Reasoning</b>
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2508.04361"><img src="https://img.shields.io/badge/arXiv-2508.04361-b31b1b.svg" alt="arXiv"></a>
-  <a href="#-leaderboard"><img src="https://img.shields.io/badge/🏆-Leaderboard-blue" alt="Leaderboard"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
-  <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python">
+  <a href="https://arxiv.org/abs/2508.04361"><img src="https://img.shields.io/badge/📄_Paper-arXiv_2508.04361-B31B1B.svg?style=for-the-badge" alt="arXiv"></a>
+  <a href="#-leaderboard"><img src="https://img.shields.io/badge/🏆_Leaderboard-View_Results-4285F4.svg?style=for-the-badge" alt="Leaderboard"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/📜_License-MIT-00C851.svg?style=for-the-badge" alt="License"></a>
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/PyTorch-Compatible-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="PyTorch">
+  <img src="https://img.shields.io/badge/Gymnasium-Supported-232F3E?style=flat-square" alt="Gymnasium">
+  <img src="https://img.shields.io/badge/🏅_SOTA-Gemini_2.5_Pro-FFD700?style=flat-square" alt="SOTA">
+</p>
+
+<p align="center">
+  <a href="#-demo-showcase">Demo</a> •
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-games">Games</a> •
   <a href="#-unified-framework">Framework</a> •
@@ -25,22 +32,78 @@
 
 ---
 
+## 🎬 Demo Showcase
+
+<p align="center">
+  <i>Watch AI models navigate, strategize, and reason across multiple modalities in real-time</i>
+</p>
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%">
+      <img src="docs/assets/demos/whispered_pathfinding.gif" width="100%" alt="Whispered Pathfinding"/>
+      <br/>
+      <b>🔊 Whispered Pathfinding</b>
+      <br/>
+      <i>3D maze navigation via voice guidance</i>
+    </td>
+    <td align="center" width="50%">
+      <img src="docs/assets/demos/blasting_showdown.gif" width="100%" alt="Blasting Showdown"/>
+      <br/>
+      <b>💣 Blasting Showdown</b>
+      <br/>
+      <i>Multi-agent Bomberman battles</i>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="docs/assets/demos/myriad_echoes.gif" width="100%" alt="Myriad Echoes"/>
+      <br/>
+      <b>🎵 Myriad Echoes</b>
+      <br/>
+      <i>Audiovisual sequence memory</i>
+    </td>
+    <td align="center" width="50%">
+      <img src="docs/assets/demos/phantom_soldiers.gif" width="100%" alt="Phantom Soldiers"/>
+      <br/>
+      <b>👻 Phantom Soldiers</b>
+      <br/>
+      <i>Tactical fog-of-war command</i>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## 📖 Overview
 
-**OmniPlay** is a benchmark for evaluating omni-modal AI models through interactive game environments. We test how well models can process **🎬 Video**, **🔊 Audio**, **🖼️ Image**, and **📝 Text** simultaneously in dynamic scenarios — not just understand them in isolation, but reason across all modalities to take actions.
+**OmniPlay** is the first comprehensive benchmark for evaluating omni-modal AI models through interactive game environments. We test how well models can process **🎬 Video**, **🔊 Audio**, **🖼️ Image**, and **📝 Text** simultaneously in dynamic scenarios — not just understand them in isolation, but **reason across all modalities to take actions**.
+
+<p align="center">
+  <table>
+    <tr>
+      <td align="center">🎮<br/><b>5 Games</b></td>
+      <td align="center">🎥<br/><b>Video Input</b></td>
+      <td align="center">🔊<br/><b>Audio Input</b></td>
+      <td align="center">🧠<br/><b>Agentic Reasoning</b></td>
+      <td align="center">📊<br/><b>Human Baseline</b></td>
+    </tr>
+  </table>
+</p>
 
 ### Why OmniPlay?
 
-- 🎮 **Interactive**: Models must take actions in real-time game environments
-- 🌐 **Truly Omni-Modal**: Tests video, audio, image, and text understanding together
-- 🧠 **Reasoning Required**: Games demand cross-modal reasoning, not just perception
+| Feature | Description |
+|:--------|:------------|
+| 🎮 **Interactive** | Models must take actions in real-time game environments, not just answer questions |
+| 🌐 **Truly Omni-Modal** | Tests video, audio, image, and text understanding **together** |
+| 🧠 **Agentic Reasoning** | Games demand cross-modal reasoning, planning, and decision-making |
+| 🎯 **Diagnostic** | Reveals specific capability gaps through diverse task types |
+| 📈 **Comparable** | Standardized metrics with human expert baselines |
 
-### ✨ Key Features
+### ✨ Key Findings
 
-- 🎯 **5 Diverse Games** — Strategy, puzzle, rhythm, navigation, and tactical genres
-- 🎥 **Video + Audio + Image** — Full multimodal input support
-- 📊 **Standardized Metrics** — Fair comparison with human baseline
-- 🔧 **Easy to Extend** — Add new games and models easily
+> 🔬 **Capability Schism**: Current omni-modal models show severe performance gaps across tasks. Gemini 2.5 Pro achieves **97.5%** on audio navigation but only **28.4%** on audio-visual learning — a **3.4x** difference!
 
 ---
 
@@ -201,6 +264,16 @@ registry.register(
 ## 🏆 Leaderboard
 
 > **Last Updated**: October 2025 | [Full Leaderboard →](docs/LEADERBOARD.md)
+
+### 📊 Capability Schism Visualization
+
+<p align="center">
+  <img src="docs/assets/radar_chart.png" width="80%" alt="Model Capability Radar Chart"/>
+</p>
+
+<p align="center">
+  <i>The radar chart reveals a striking "Capability Schism" — models excel at audio navigation but struggle with complex multimodal reasoning tasks like tactical command and audio-visual learning.</i>
+</p>
 
 ### 🥇 Overall Ranking
 

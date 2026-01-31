@@ -4,7 +4,10 @@ import pygame
 import random
 import numpy as np
 import sys
-from moviepy.editor import ImageSequenceClip
+try:
+    from moviepy.editor import ImageSequenceClip
+except ImportError:
+    from moviepy import ImageSequenceClip
 from pydub import AudioSegment
 import os
 import glob

@@ -154,8 +154,9 @@ class BombermanEnv(gym.Env):
                 }),
                 'game_over': spaces.Discrete(2),
             }),
-            'image': spaces.Text(max_length=1000000),  # Base64 encoded image
-            'audio': spaces.Text(max_length=1000000),  # Base64 encoded audio
+            # Use Box with dtype=np.uint8 for base64 strings (gym compatibility)
+            'image': spaces.Box(low=0, high=255, shape=(1,), dtype=np.uint8),  # Placeholder for Base64 encoded image
+            'audio': spaces.Box(low=0, high=255, shape=(1,), dtype=np.uint8),  # Placeholder for Base64 encoded audio
             'step': spaces.Box(low=0, high=max_steps, shape=(), dtype=np.int32),
         })
         
@@ -177,7 +178,10 @@ class BombermanEnv(gym.Env):
     
     def reset(self, seed=None, options=None, difficulty=None):
         """Resets the environment, with an option to choose a new difficulty"""
-        super().reset(seed=seed)
+        # Handle seed for reproducibility (compatible with both old and new gym)
+        if seed is not None:
+            np.random.seed(seed)
+            random.seed(seed)
         
         # If a new difficulty is provided, update the difficulty settings
         if difficulty is not None:

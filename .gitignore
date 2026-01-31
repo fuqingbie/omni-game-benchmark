@@ -205,3 +205,43 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+# ============================================
+# Project-specific ignores
+# ============================================
+
+# macOS
+.DS_Store
+*.DS_Store
+
+# Game data and outputs (runtime generated)
+game_data/
+eval/game/*/game_data/
+outputs/
+results/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Video outputs (generated during evaluation)
+eval/game/*/assets/temp/
+*.mp4
+
+# PDF files (keep only in docs/assets if needed)
+*.pdf
+!docs/assets/*.pdf
+
+# Large model weights or checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Scripts for local use (optional - remove if you want to share)
+# scripts/record_game_gifs.py
+
+# IDE settings (uncomment if needed)
+# .vscode/
+# .idea/

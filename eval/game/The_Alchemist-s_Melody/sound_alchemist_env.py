@@ -58,16 +58,23 @@ class Game:
         self._verbose = False
         
         # Import and initialize the original game's global variables
+        # Try multiple import methods for flexibility
+        self.game_module = None
         try:
             from . import sound_alchemist_game as game_module
             self.game_module = game_module
-            # Set the game's screen
-            game_module.screen = screen
-            # Enable auto-start mode
-            game_module.set_auto_start_mode(True)
         except ImportError:
-            print("Warning: Could not import sound_alchemist_game module")
-            self.game_module = None
+            try:
+                import sound_alchemist_game as game_module
+                self.game_module = game_module
+            except ImportError:
+                print("Warning: Could not import sound_alchemist_game module")
+        
+        if self.game_module:
+            # Set the game's screen
+            self.game_module.screen = screen
+            # Enable auto-start mode
+            self.game_module.set_auto_start_mode(True)
 
     @property
     def verbose(self):
