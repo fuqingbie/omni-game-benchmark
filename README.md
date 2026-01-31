@@ -40,45 +40,44 @@
 
 <table align="center">
   <tr>
-    <td align="center" width="33%">
+    <td align="center" width="50%">
       <img src="docs/assets/demos/whispered_pathfinding.gif" width="100%" alt="Whispered Pathfinding"/>
       <br/>
       <b>🔊 Whispered Pathfinding</b>
       <br/>
       <i>3D maze navigation via voice guidance</i>
     </td>
-    <td align="center" width="33%">
+    <td align="center" width="50%">
       <img src="docs/assets/demos/blasting_showdown.gif" width="100%" alt="Blasting Showdown"/>
       <br/>
       <b>💣 Blasting Showdown</b>
       <br/>
       <i>Multi-agent Bomberman battles</i>
     </td>
-    <td align="center" width="33%">
+  </tr>
+  <tr>
+    <td align="center" width="50%">
       <img src="docs/assets/demos/myriad_echoes.gif" width="100%" alt="Myriad Echoes"/>
       <br/>
       <b>🎵 Myriad Echoes</b>
       <br/>
       <i>Audiovisual sequence memory</i>
     </td>
-  </tr>
-  <tr>
-    <td align="center" width="33%">
+    <td align="center" width="50%">
       <img src="docs/assets/demos/phantom_soldiers.gif" width="100%" alt="Phantom Soldiers"/>
       <br/>
       <b>👻 Phantom Soldiers</b>
       <br/>
       <i>Tactical fog-of-war command</i>
     </td>
-    <td align="center" width="33%">
-      <img src="docs/assets/demos/alchemist_melody.gif" width="100%" alt="The Alchemist's Melody"/>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">
+      <img src="docs/assets/demos/alchemist_melody.gif" width="50%" alt="The Alchemist's Melody"/>
       <br/>
       <b>🧪 The Alchemist's Melody</b>
       <br/>
       <i>Audio-visual color-note learning</i>
-    </td>
-    <td align="center" width="33%">
-      <!-- Placeholder for future game -->
     </td>
   </tr>
 </table>
